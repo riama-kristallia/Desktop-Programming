@@ -210,7 +210,7 @@ public class Karyawan extends javax.swing.JFrame {
     int selectedID;
     private void tbKaryawanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKaryawanMouseClicked
         // TODO add your handling code here:
-        if(disableTable=false){
+        if(disableTable==false){
             btnUbah.setEnabled(true);
             btnHapus.setEnabled(true);
             selectedID = (int)tbKaryawan.getValueAt(tbKaryawan.getSelectedRow(), 0);
@@ -295,7 +295,7 @@ public class Karyawan extends javax.swing.JFrame {
         try{
             Statement stmt = conn.createStatement();
             if(modeInsert==false) {
-                stmt.executeUpdate("UPDATE karyawan set"
+                stmt.executeUpdate("UPDATE karyawan set "
                 + "nm_karyawan='"  + txtNama.getText() + "', "
                 + "jb_karyawan='"  + cbJabatan.getSelectedItem() + "' "
                 + "WHERE id_karyawan='"  + selectedID + "'");
@@ -305,7 +305,7 @@ public class Karyawan extends javax.swing.JFrame {
             }
             else {
                 stmt.executeUpdate("INSERT INTO karyawan('nm_karyawan','jb_karyawan') VALUES ("
-                + "'" + txtNama.getText() + ","
+                + "'" + txtNama.getText() + "',"
                 + "'" + cbJabatan.getSelectedItem() + "') ");
                 
                 JOptionPane.showMessageDialog(null, "Insert berhasil");
@@ -318,7 +318,7 @@ public class Karyawan extends javax.swing.JFrame {
             btnUbah.setEnabled(true);
             btnBaru.setEnabled(true);
             btnHapus.setEnabled(true);
-            tbKaryawan.setEnabled(false);
+            tbKaryawan.setEnabled(true);
             txtNama.setEnabled(false);
             cbJabatan.setEnabled(false);
         } catch (Exception e){
